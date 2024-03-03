@@ -10,8 +10,8 @@ Tim Riedel
 Author 2
  
 Further Information:
-http://diystream.cns.utexas.edu/
-
+http://cns.utexas.edu/fri
+ 
 Research Educator:
 Timothy Riedel
 triedel@utexas.edu
@@ -21,35 +21,56 @@ blah, blah, blah,
  
 Known Issues:
 blah, blah, blah, blah
-Ignore this error message if you see it using the javaScript console: Error with Permissions-Policy header: Origin trial controlled feature not enabled: 'interest-cohort'.
 
-References:
 https://www.w3schools.com/w3css/default.asp
 https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-file
 -->
 	
-<head> 
-	<title>Hello World</title>  
-]	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<link rel="stylesheet" href="w3.css">
-	<link rel="stylesheet" href="w3-colors-flat.css">
-</head> 
+   <head> 
+      <title>Hello World</title>  
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <link rel="stylesheet" href="w3.css">
+      <link rel="stylesheet" href="w3-colors-flat.css">
+   </head> 
+
 
 <script>
-
-	//YOUR JAVASCRIPT GOES HERE
-
-</script>	
+        var PMS_count = 0;
+        var PCOS_count = 0;
 
 
-<!-- THIS STYLE CODE HELPS MAKE YOUR APP LOOK GOOD. PROBABLY DONT MESS WITH IT -->
+        function PmsAdd(){
+            PMS_count = PMS_count + 1;
+
+        };
+
+        function PcosAdd(){
+            PCOS_count = PCOS_count + 1;
+	};
+	
+	function resultsPercentage(){
+		var resultText = document.getElementById("results");
+		var PMSPercent = (PMS_count/4)*100; // This variable calculates the PMS percent by taking the PMS count, dividing it by the total number of questions,and multiplying by 100.  
+		var PCOSPercent = (PCOS_count/4)*100; // This variable calculates the PCOS percent by taking the total PCOS count, diving it by the total number of questions, and multiplying by 100. 
+		resultText.innerHTML = "Probability it is PMS = " + PMSPercent + "%" + "<br> Probability it is PCOS = " + PCOSPercent + "%"; // Text displayed when function is run.
+	}
+	
+	
+  </script>
+
+</body>
+</html>
+
+
 <style>	
-.body {
+.body 
+{
      margin: 0em;
 }
 
-.page {
+.page 
+{
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -67,9 +88,85 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 </style>
 
 <body>
+<div id="header" class="w3-container w3-flat-carrot">
+	<h1>PMS or PCOS?</h1>
+</div>
 	
-	<!-- HERE IS WHERE ALL OF YOUR HTML PAGES GO -->
-	REPLACE THIS TEXT
+<div id="content" class="w3-container">
+	<p>Are you feeling like you might have a cold but wonder if it is allergies. Answer a few short questions to find out!</p>
 	
+	<a href="#one" class="w3-btn w3-grey w3-round"> Get Started </a>
+	
+	<p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at 		Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code 			does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
+ 	
+	<p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
+
+<!-- page 2 questions and buttons -->
+<div class="page" id="one">
+	<div id="header" class="w3-container w3-flat-carrot">
+		<h1>Question 1</h1>
+	</div> 
+
+    	<div id="content" class="w3-container">
+        <p>Do you experience irregular menstrual cycles?</p>   
+	<a href="#two"  onclick="PcosAdd();" class="w3-btn w3-black"> Yes</a>
+        <a href="#two"  onclick="PmsAdd();" class="w3-btn w3-black">No</a>
+ </div><!-- page 2 questions and buttons -->
+
+</div>
+<div class="page" id="two">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 2</h1>
+	</div>
+	
+	<div id="content" class="w3-container">
+	<p>Have you noticed excessive hair growth in areas such as the face, chest, or back?</p>
+	<a href="#three"  onclick="PcosAdd();" class="w3-btn w3-black"> Yes</a>
+        <a href="#three"  onclick="PmsAdd();" class="w3-btn w3-black">No</a>
+ </div><!-- page 3 questions and buttons -->
+
+</div>	
+<div class="page" id="three">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 3</h1>
+	</div>
+	
+	<div id="content" class="w3-container">
+	<p>Do you frequently experience mood swings or changes in mood prior to your period?</p>
+	<a href="#four"  onclick="PmsAdd();" class="w3-btn w3-black"> Yes</a>
+        <a href="#four"  onclick="PcosAdd();" class="w3-btn w3-black">No</a>
+ </div><!-- page 4 questions and buttons -->
+	
+</div>
+<div class="page" id="four">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 4</h1>
+	</div>
+	
+	<div id="content" class="w3-container">
+		<p>Have you experienced difficulty getting pregnant or infertility issues?</p>
+	<a href="#five"  onclick="PcosAdd();" class="w3-btn w3-black"> Yes</a>
+        <a href="#five"  onclick="PmsAdd();" class="w3-btn w3-black">No</a>
+ </div><!-- page 5 questions and buttons -->
+	
+<body>
+
+<div class="page" id="five">
+<!-- holds the results for each of the individulal attributes --> 
+	<div class="w3-container w3-flat-carrot">
+		<h1>Results</h1>
+<!-- Result page header --> 
+	</div>
+<!-- Divider to separate text --> 
+	
+	<div id="content" class="w3-container">
+<p id="results"></p> <!-- This tells the button where to place the text for the function --> 
+		<a onclick="resultsPercentage();" class="w3-btn w3-black"> Click to Get Your Results! </a> 
+<!-- This is the button that has the function to display the result functions --> 
+
+<footer class="w3-bottom w3-container w3-flat-carrot">
+	<p>DIY!</p>
+</footer>
+
 </body>
 </html>
